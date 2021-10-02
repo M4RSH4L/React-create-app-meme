@@ -5,7 +5,7 @@ import './App.css';
 function App() {
 
   const [linea1, setLinea1] = useState ('');
-  const [linea2, setLinea2] = useState ('', '');
+  const [linea2, setLinea2] = useState ('');
 
  const onChangeline1 = function (valor) {
    debugger;
