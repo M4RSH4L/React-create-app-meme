@@ -6,35 +6,48 @@ function App() {
 
   const [linea1, setLinea1] = useState ('');
   const [linea2, setLinea2] = useState ('');
+  const [imagen, setimagen] = useState ('');
 
- const onChangeline1 = function (valor) {
-   debugger;
-   alert (valor)
-   
+ const onChangeline1 = function (evento) {
+   setLinea1 (evento.target.value);
  }
+
+ const onChangeline2 = function (evento) {
+  setLinea2 (evento.target.value);
+}
+const onChangeimagen = function (evento) {
+  setimagen (evento.target.value);
+}
+const onClikcexportar = function (evento) {
+  alert("export");
+  html2canvas(document.querySelector("#capture")).then(canvas => {
+    document.body.appendChild(canvas)
+});
+}
+
  
   return (
     <div className="App">
      
      
-      <select>
-         <option value="1">1</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-         <option value="4">4</option>
-         <option value="5">5</option>
-         <option value="6">6</option>
+      <select onChange={onChangeimagen}>
+         <option value="batman">batman</option>
+         <option value="button">button</option>
+         <option value="chico">chico</option>
+         <option value="chocolatero">chocolatero</option>
+         <option value="mr been">mr been</option>
+         <option value="nene">nene</option>
       </select> <br/>
 
       <input onChange={onChangeline1}  type="Text" placeholder="linea1"/><br/>
-      <input type="Text" placeholder="linea2"/><br/>
-      <button>exportar</button>
+      <input onChange={onChangeline2} type="Text" placeholder="linea2"/><br/>
+      <button onClick={onClikcexportar}>exportar</button>
       
       
-      <div>
+      <div className="meme">
         <span>{linea1}</span> <br/>
         <span>{linea2}</span> 
-        <img src=""></img>
+        <img src={"/Img/" + imagen + ".jpg"}></img>
       </div>
     
   
